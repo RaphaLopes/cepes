@@ -226,7 +226,7 @@
   letter-spacing: .03rem;
   margin: .5rem;
   text-transform: uppercase;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-weight: 400;
 }
 
