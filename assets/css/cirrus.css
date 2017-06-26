@@ -1,0 +1,3432 @@
+/*
+* Cirrus 0.5.2
+* Stanley Lim, Copyright 2017
+* https://spiderpig86.github.io/Cirrus
+*/
+/* ANIMATIONS */
+
+/* Spinning loading animation */
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+@keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
+            transform: rotate(359deg);
+  }
+}
+
+.hover-grow { /* Mouse leave */
+  transition-duration: .32s;
+}
+
+.hover-grow:hover { /* Mouse enter */
+      transform: scale(1.1);
+    transition-duration: .08s;
+}
+
+/* Heart animation */
+@-webkit-keyframes pound {
+  to {
+    transform: scale(1.1);
+  }
+}
+@keyframes pound {
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.animated.pulse {
+    animation: pound 0.35s infinite alternate;
+    -webkit-animation: pound 0.35s infinite alternate;
+    vertical-align: baseline;
+}
+
+/* Bounce animations */
+@-webkit-keyframes bounce {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1); /* Ease-out based on power of four */
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    -webkit-transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+@keyframes bounce {
+  from,
+  20%,
+  53%,
+  80%,
+  to {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1); /* Ease-out based on power of four */
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  40%,
+  43% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    -webkit-transform: translate3d(0, -30px, 0);
+    transform: translate3d(0, -30px, 0);
+  }
+  70% {
+    -webkit-animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+    -webkit-transform: translate3d(0, -15px, 0);
+    transform: translate3d(0, -15px, 0);
+  }
+  90% {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0);
+  }
+}
+
+.animated.bounce {
+  animation-name: bounce;
+  -webkit-animation-name: bounce;
+  transform-origin: center bottom;
+  -webkit-transform-origin: center bottom;
+}
+
+@keyframes bounceIn {
+  from,
+  20%,
+  40%,
+  60%,
+  80%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+  }
+  0% {
+    opacity: 0;
+    transform: scale3d(.3, .3, .3);
+  }
+  20% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    transform: scale3d(.9, .9, .9);
+  }
+  60% {
+    opacity: 1;
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  80% {
+    transform: scale3d(.97, .97, .97);
+  }
+  to {
+    opacity: 1;
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.animated.bounceIn {
+  animation-name: bounceIn;
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animated.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+.animated.infinite.alternate {
+  animation-direction: alternate;
+}
+
+.animated.paused {
+  -webkit-animation-play-state: paused !important; /* Safari 4.0 - 8.0 */
+    animation-play-state: paused !important;
+}
+/* BUTTONS */
+
+/* Button styling */
+/* Un-themed */
+.btn, button, [type=submit] {
+  display: block;
+  line-height: 2rem;
+  overflow: hidden;
+  padding: .5rem 1.5rem;
+  width: auto;
+  border: 1px solid transparent;
+  border-radius: .25rem;
+  cursor: pointer;
+  text-align: center;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -moz-transition: all .3s;
+  background-color: #fefefe;
+  border-color: #d9d9d9;
+  color: #737373;
+  font-size: .75em;
+  letter-spacing: .03rem;
+  margin: .5rem;
+  text-transform: uppercase;
+  font-family: Montserrat;
+  font-weight: 400;
+}
+
+.btn:hover, button:hover, [type=submit]:hover {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -moz-transition: all .3s;
+  background: #eee;
+}
+
+button.animated:hover, [type=submit].animated:hover, .btn.animated:hover {
+   -webkit-transform: scale(1.1);
+         transform: scale(1.1);
+}
+
+.btn:active, button:active, [type=submit]:active {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -moz-transition: all .3s;
+  background: #ccc;
+}
+
+/* Make the loading circle, if present, white when button is active */
+.btn.loading:active:after, button.loading:active:after, [type=submit].loading:active:after {
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  -moz-transition: all .3s;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  border-right-color: transparent;
+  border-top-color: transparent;
+}
+
+button.animated:active, [type=submit].animated:active, .btn.animated:active {
+   -webkit-transform: scale(0.97);
+    transform: inherit, scale(0.97); 
+}
+
+.btn:focus, button:focus, [type=submit]:focus {
+  outline: none;
+}
+
+.btn:disabled, button:disabled, [type=submit]:disabled {
+  cursor: not-allowed;
+  background-color: #d7d7da; /* Make it darker than the other input colors */
+  color: #fff;
+}
+
+.btn:disabled:hover, button:disabled:hover, [type=submit]:disabled:hover {
+  background-color: #d7d7da; /* Make it darker than the other input colors */
+}
+
+/* Accent button disabled */
+.btn-accent:disabled {
+    background-color: #f03d4d;
+    color: #fff;
+    border-color: #c21b2b;
+    opacity: .6;
+}
+
+.btn-accent:disabled:hover {
+    background-color: #f03d4d;
+    color: #fff;
+    border-color: #c21b2b;
+}
+
+/* Different styles */
+
+/* Outline (white) */
+.btn-outline {
+    color: #fff;
+    background: transparent;
+    transition: all .3s;
+    border: 1px solid #fff;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+}
+
+.btn-outline:hover,
+.btn-outline:active {
+      background: rgba(255, 255, 255, 0.35);
+    color: #fff;
+  transition: all .3s;
+}
+
+/* Inverted outline (dark) */
+.btn-outline-inverted {
+  border: 1px solid #222;
+  color: #222;
+  background: transparent;
+  transition: all 0.3s;
+}
+
+.btn-outline-inverted:hover,
+.btn-outline-inverted:active {
+  color: #fff;
+  background: #222;
+}
+
+/* Transparent Background */
+.btn-transparent {
+  background: transparent;
+  color: #999;
+  border: 0;
+}
+
+.btn-transparent:hover {
+  background: rgba(0, 0, 0, .1);
+  color: #999;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.btn-transparent:active {
+  background: rgba(0, 0, 0, .3);
+  color: #f5f5f5;
+  -webkit-transform: none;
+          transform: none;
+}
+
+.btn-container { /* Make floated buttons respond to margins */
+    overflow: hidden;
+}
+
+/* White */
+.btn-white {
+  background: #fff;
+}
+
+.btn-white:hover {
+  background: #f5f5f5;
+}
+
+.btn-white:active {
+  background: #f0f0f0;
+}
+
+/* Light gray */
+.btn-light {
+  background: #eee;
+  color: #333;
+}
+
+.btn-light:hover {
+  background: #e0e0e0;
+}
+
+.btn-light:active {
+   background: #dbdbdb;
+}
+
+/* Dark Gray */
+.btn-dark {
+  background: #444;
+  color: #fff;
+  border: 0;
+}
+
+.btn-dark:hover {
+  background: #3a3a3a;
+}
+
+.btn-dark:active {
+  background: #303030;
+}
+
+/* Black */
+.btn-black {
+  background: #000;
+  color: #fff;
+}
+
+.btn-black:hover {
+  background: #000;
+}
+
+.btn-black:active {
+  background: #000;
+}
+
+/* Right of input */
+.has-controls.input:not([class*="left action"])>button:last-child, .has-controls.input:not([class*="left action"])>.btn:last-child>.btn {
+    border-radius: 0 .28571429rem .28571429rem 0;
+}
+
+.has-controls.input:not([class*="right action"])>button:last-child, .has-controls.input:not([class*="right action"])>.btn:last-child>.btn {
+    border-radius: .28571429rem 0 0 .28571429rem ;
+}
+
+/* Tiny button */
+.btn-tiny {
+  line-height: 1.5rem;
+  padding: 0 .25rem;
+  font-size: 50%;
+}
+
+/* Small button */
+.btn-small {
+    line-height: 2.4rem;
+    padding: 0 .5rem;
+    font-size: 70%;
+}
+
+/* Big button */
+.btn-large {
+     line-height: 3.5rem;
+    padding: 0 1.5rem;
+    font-size: 90%;
+}
+
+.btn-xlarge {
+  line-height: 4.5rem;
+  padding: 0 2rem;
+  font-size: 110%;
+}
+
+/* Loading button */
+.loading {
+    color: transparent !important;
+    position: relative;
+}
+
+.loading:after {
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    border-right-color: transparent;
+    border-top-color: transparent;
+    content: "";
+    display: block;
+    height: 1rem;
+    position: relative;
+    width: 1rem;
+    left: 50%;
+    margin-left: -10px;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
+    position: absolute !important;
+      -webkit-animation: loading 500ms infinite linear;
+    animation: loading 500ms infinite linear;
+}
+
+.loading.btn-accent:after {
+    border: 2px solid #fff;
+      border-right-color: transparent;
+    border-top-color: transparent;
+}
+
+/* Override default behavior of aligning font awesome icons to the top */
+button .fa, .btn .fa, [type=submit] .fa {
+    vertical-align: baseline;
+}
+
+button .fa.pad-right, .btn .fa.pad-right, [type=submit] .fa.pad-right {
+    margin-right: .4rem;
+}
+
+button .fa.pad-left, .btn .fa.pad-left, [type=submit] .fa.pad-left {
+    margin-left: .4rem;
+}
+
+/* Button with accent */
+.btn-accent {
+  background-color: #f03d4d;
+  color: #fff;
+  border-color: #c21b2b;
+}
+
+.btn-accent:hover {
+  background-color: #d62939;
+}
+
+.btn-accent:active {
+  background-color: #c21b2b;
+}
+
+/* Success Button */
+.btn-success {
+    color: #fff;
+    background-color: #00cb52;
+    border-color: #00ad46;
+}
+
+.btn-success:hover {
+    background-color: #00b147;
+}
+
+.btn-success:active {
+    background-color: #00b147;
+}
+
+/* Button tooltip on hover */
+.btn-tooltip {
+  position: relative; /* let's the pseudoelement that we are displaying relative to the button. */
+  overflow: visible; /* Allows the pseudoelement to be shown */
+  white-space: nowrap; /* Keeps the button text from wrapping and getting too large */
+}
+
+/* This is the psuedoelement that creates the tooltip */
+.btn-tooltip:after {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: absolute;
+  color: #fff;
+  font-size: .6rem;
+  background: rgba(69, 77, 93, .9);
+  content: attr(data-tooltip); /* Retrieves the data specified in this element property and displays it as text */
+  display: block;
+  line-height: 1rem;
+  text-transform: none;
+  overflow: hidden;
+  padding: .4rem .8rem;
+  opacity: 0; /* Hide the element */
+  text-overflow: ellipsis;
+  max-width: 15rem;
+  -webkit-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  transition: all .2s ease;
+      -webkit-transition: all .2s ease;
+      -moz-transition: all .2s ease;
+      -ms-transition: all .2s ease;
+      -o-transition: all .2s ease;
+  z-index: 200;
+  pointer-events: none;
+  bottom: 100%; /* Pushes the tooltip above the button */
+  left: 50%; /* Horizontally center it */
+  border-radius: .2rem;
+}
+
+/* Handles the on hover event of the button and then modifies the associated tooltip accordingly. */
+.btn-tooltip:focus::after, .btn-tooltip:hover::after {
+      opacity: 1;
+      -webkit-transform: translate(-50%, -.5rem);
+      -ms-transform: translate(-50%, -.5rem);
+      transform: translate(-50%, -.5rem);
+      transition: all .2s ease;
+      -webkit-transition: all .2s ease;
+      -moz-transition: all .2s ease;
+      -ms-transition: all .2s ease;
+      -o-transition: all .2s ease;
+}
+
+/* Tooltip bottom */
+.btn-tooltip.tooltip-bottom::after {
+  top: 100%;
+  transform: translate(-50%, -1rem); /* Moves tooltip to the center horizontally and shifts tooltip down */
+  -webkit-transform: translate(-50%, -1rem);
+  -moz-transform: translate(-50%, -1rem);
+  -ms-transform: translate(-50%, -1rem);
+  -o-transform: translate(-50%, -1rem);
+  bottom: auto;
+}
+
+.btn-tooltip.tooltip-bottom:hover::after,
+.btn-tooltip.tooltip-bottom:focus::after {
+  transform: translate(-50%, .5rem);
+  -webkit-transform: translate(-50%, .5rem);
+  -moz-transform: translate(-50%, .5rem);
+  -ms-transform: translate(-50%, .5rem);
+  -o-transform: translate(-50%, .5rem);
+}
+
+/* Tooltip right */
+.btn-tooltip.tooltip-right::after {
+  left: 100%;
+  bottom: 50%;
+  transform: translate(-1rem, 50%);
+  -webkit-transform: translate(-1rem, 50%);
+  -moz-transform: translate(-1rem, 50%);
+  -ms-transform: translate(-1rem, 50%);
+  -o-transform: translate(-1rem, 50%);
+}
+
+.btn-tooltip.tooltip-right:hover::after,
+.btn-tooltip.tooltip-right:focus::after {
+  transform: translate(.5rem, 50%);
+  -webkit-transform: translate(.5rem, 50%);
+  -moz-transform: translate(.5rem, 50%);
+  -ms-transform: translate(.5rem, 50%);
+  -o-transform: translate(.5rem, 50%);
+}
+
+/* Tooltip Left */
+.btn-tooltip.tooltip-left::after {
+  right: 100%;
+  bottom: 50%;
+  left: auto; /* Needed to work */
+  transform: translate(1rem, 50%);
+  -webkit-transform: translate(1rem, 50%);
+  -moz-transform: translate(1rem, 50%);
+  -ms-transform: translate(1rem, 50%);
+  -o-transform: translate(1rem, 50%);
+}
+
+.btn-tooltip.tooltip-left:hover::after,
+.btn-tooltip.tooltip-left:focus::after {
+  transform: translate(-.5rem, 50%);
+  -webkit-transform: translate(-.5rem, 50%);
+  -moz-transform: translate(-.5rem, 50%);
+  -ms-transform: translate(-.5rem, 50%);
+  -o-transform: translate(-.5rem, 50%);
+}
+
+/* BUTTON GROUPS */
+/* Will group buttons with components in a single looking component */
+
+.btn-group {
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; /* Wrap contents to next row on overflow */
+  display: inline-flex;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+}
+
+.btn-group.btn-group-fill { /* Makes the button group fill the width and proportion the buttons to fill the space */
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+}
+
+.btn-group .btn, .btn-group button, .btn-group [type=submit] {
+  -webkit-flex: 1 0 auto;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  margin: 0;
+}
+
+.btn-group.btn-group-fill .btn, .btn-group.btn-group-fill button, .btn-group.btn-group-fill [type=submit] {
+  -webkit-flex: 1 0 0;
+  -ms-flex: 1 0 0;
+  flex: 1 0 0; /* Make the buttons fill the available width and proportion themselves */
+}
+
+.btn-group .btn:first-child:not(:last-child),
+.btn-group button:first-child:not(:last-child) ,
+.btn-group [type="submit"]:first-child:not(:last-child) { /* Style the first child in group > 1 buttons */
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.btn-group .btn:last-child:not(:first-child),
+.btn-group button:last-child:not(:first-child),
+.btn-group [type="submit"]:last-child:not(:first-child) { /* Style the last child in group > 1 buttons */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  margin-left: -.1rem;
+}
+
+.btn-group .btn:not(:first-child):not(:last-child),
+.btn-group button:not(:first-child):not(:last-child) ,
+.btn-group [type="submit"]:not(:first-child):not(:last-child) { /* Style button in middle of group */
+  border-radius: 0; /* Remove roundness from center buttons */
+  margin-left: -.1rem;
+}
+/* CARDS */
+
+.card {
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+    display: block;
+    position: relative;
+    overflow: hidden;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    backface-visibility: hidden;
+}
+
+.card:hover {
+    box-shadow: 0 4px 6px rgba(10, 10, 10, 0.1), 0 0 12px 2px rgba(10, 10, 10, 0.1);
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.slide-up:hover .card-image {
+   transform: translateY(-40px);
+}
+
+.card:hover .card-image:after {
+  opacity: 0;
+}
+
+.card-image {
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+      border-radius: 5px 5px 0 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.card-image:after {
+  content: "";
+  display: block;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.1);
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+  bottom: 0;
+}
+
+.card-container {
+  display: block;
+position: relative;
+  height: 40%;
+  min-height: 332px; /* So it appears in html5 standards mode */
+}
+
+.card .title-container .title, .card .title-container .subtitle {
+  color: #fff;
+  margin: 1rem auto;
+}
+
+.card .title-container {
+  position: absolute;
+  bottom: 1rem;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.card .title-container .title {
+  font-weight: 300;
+  font-size: 1.5rem;
+  margin-bottom: .3rem;
+  text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.25);
+}
+
+.card .action-bar {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding: 0 .5rem;
+    border-top: 1px solid #E0E0E0;
+    box-sizing: border-box;
+    -webkit-transition: left 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    transition: left 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.card .action-bar + .card-footer {
+  padding: 1rem 0;
+  border-top: 1px solid #E0E0E0;
+}
+
+.card button, .card .btn {
+  display: inline-block;
+  display: inline-block;
+border-color: transparent;
+}
+
+.card button:hover, .card .btn:hover {
+  -webkit-transform: none;
+          transform: none;
+}
+
+.card button:focus, .card .btn:focus {
+  -webkit-transform: none;
+          transform: none;
+}
+
+/* More card components in second example */
+.mobile-title {
+  position: absolute;
+  left: 0;
+  background-color: #FFF;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+  width: 100%;
+      padding: 1rem 0;
+      backface-visibility: hidden;
+}
+
+.mobile-title .title, .mobile-title .subtitle {
+  margin: .3rem;
+  text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden;
+}
+
+.card:hover .mobile-title {
+  margin-top: -7rem;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.card:hover .card-body {
+  opacity: 1;
+  -webkit-transition: all .3s ease-in-out;
+  -moz-transition: all .3s ease-in-out;
+  -ms-transition: all .3s ease-in-out;
+  -o-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+
+.card-body {
+  opacity: 0;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+
+.card-footer {
+  position: relative;
+    margin: .5rem auto;
+    font-size: .75rem;
+    color: #9FA5A8;
+}
+
+.card p {
+    margin: 1rem 0;
+    /*max-height: 8rem; /* Prevents ridiculously looking cards */
+}
+
+/*
+    NOTE: To have cards with the same height, place the card class with col-x classes and have the parent have fluid-container.
+*/
+
+/* Card Title Bar */
+.card-head {
+    align-items: stretch;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    box-shadow: 0px 1px 8px 1px rgba(10, 10, 10, 0.1);
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+}
+
+.card-head-title {
+  align-items: center;
+  -webkit-box-align: center;
+    -ms-flex-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    font-weight: 700;
+    padding: 0 1rem;
+}
+
+/* CARD TILES */
+/* More flexible layout for cards using flexbox */
+
+.card-tile {
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  align-content: space-between; /* Ensure space between child elements of card tile */
+  -webkit-align-content: space-between;
+  align-items: flex-start; /* Push elements to the top of container instead of center/bottom */
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  -ms-flex-line-pack: justify; /* Evenly distribute lines */
+}
+
+.card-tile p {
+  font-size: .8rem;
+}
+
+.card-tile .tile-icon, .card-tile .tile-buttons {
+  flex: 0 0 auto;
+  -webkit-flex: 0 0 auto;
+  -ms-flex: 0 0 auto;
+}
+
+/* Override the default behavior where buttons display as blocks */
+.card-tile .tile-buttons button,
+.card-tile .tile-buttons .btn,
+.card-tile .tile-buttons [type=submit] {
+  display: inline-block;
+  margin: .1rem; /* Reduce space used by buttons, default .5rem */
+}
+
+.card-tile .tile-container {
+  flex: 1 1 auto;
+  -webkit-flex: 1 1 auto;
+  -ms-flex: 1 1 auto;
+}
+
+/* Add spacing between the elements in between */
+.card-tile .tile-container:not(:first-child) {
+  padding-left: 1rem;
+}
+
+.card-tile .tile-container:not(:last-child) {
+  padding-right: 1rem;
+}
+
+.card-tile .tile-title {
+  line-height: 2rem;
+  font-weight: bolder;
+}
+
+.card-tile .tile-subtitle {
+  line-height: 2rem;
+  opacity: .7;
+}
+
+/* Force elements to align at the center vertical height */
+.card-tile.tile-center {
+  align-items: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+}
+
+.card-tile.tile-center .tile-container { /* Shrink the text to fit inside the card-tile */
+  overflow: hidden;
+}
+
+/* Keep the text from overflowing */
+.card-tile.tile-center .tile-title,
+.card-tile.tile-center .tile-subtitle.no-wrap {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+/* CODE */
+
+code {
+  padding: .3rem;
+  margin: .5em 0;
+  overflow: auto;
+  background: #ececec;
+  border-radius: 3px;
+}
+
+code:before {
+    color: #acb3c2;
+    content: attr(data-lang);
+    font-size: .9rem;
+    position: absolute;
+    right: 1rem;
+    top: .7rem;
+}
+
+pre > code {
+  font-size: 75%;
+  display: block;
+  padding: 1rem 1.5rem;
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  color: #626262;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  direction: ltr;
+  text-align: left;
+  word-spacing: normal;
+  word-break: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+ border-left: .3rem solid #f03d4d;
+ margin: 0;
+     position: relative;
+}
+
+/* BASE STYLING FOR CIRRUS*/
+
+* {
+  margin: 0;
+  padding: 0;
+  /* Prevent setting borders from increasing the size of an elrement */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+      -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  border: none;
+  height: 100%;
+}
+
+/* Nunito Sans for the font */
+body {
+  letter-spacing: 0.01rem;
+    line-height: 1.6;
+    font-size: 1rem;
+  font-weight: 400;
+  font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, Avenir, "Avenir Next", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  letter-spacing: 0.01rem;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.004);
+  color: #374054;
+}
+
+/* remove bullets from unordered lists */
+ul {
+  list-style: none;
+}
+
+/* Setting up embedded content */
+img,
+embed,
+object,
+audio,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* remove iframe borders */
+iframe {
+  border: 0;
+  outline: 0;
+}
+
+article,
+aside,
+figure,
+footer,
+header,
+hgroup,
+section {
+  display: block;
+}
+
+.accent {
+  background: -webkit-linear-gradient(top, #FF5F6D, #FFC371);
+  background: linear-gradient(to bottom, #FF5F6D, #FFC371);
+  color: #fff;
+}
+
+.accent-horiz {
+  background: -webkit-linear-gradient(left, #FF5F6D, #FFC371);
+  background: linear-gradient(to right, #FF5F6D, #FFC371);
+}
+
+/* Selection Color */
+::-moz-selection { /* Code for Firefox */
+    background: rgba(0, 161, 255, 0.2);
+}
+
+::selection {
+    background: rgba(0, 161, 255, 0.2);
+}
+
+/* When focusing any element */
+:focus {
+    /* box-shadow: 0 0 0.1rem 0.15rem rgba(51, 51, 51, 0.07); */
+    box-shadow: 0 0 0.1rem 0.15rem rgba(240, 61, 77, .07);
+    outline: none;
+}
+/* FONT */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito:200,300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 4rem; /* 64px */
+  letter-spacing: .05rem;
+}
+
+h2 {
+  font-size: 3.5rem;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 2.5rem;
+}
+
+h5 {
+  font-size: 2rem;
+}
+
+h6 {
+  font-size: 1.5rem;
+}
+
+strong {
+  font-weight: 700;
+}
+
+.light {
+  font-weight: 200;
+  font-family: 'Nunito Sans';
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    color: #363636;
+    line-height: 1.125em;
+    margin: 1rem 0;
+}
+
+.title {
+  font-weight: bolder;
+}
+
+.title:not(:last-child), .subtitle:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+.accent .subtitle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.title + .subtitle { /* Make the subtitlte closer to the title */
+    margin-top: -1.25rem;
+    font-size: 90%;
+}
+
+p, article, blockquote {
+  font-size: 1rem;
+  line-height: 2rem;
+  margin: 2rem 0;
+}
+
+/* Use default line-height for these texts and when line-height-inherit is specified */
+.card-tile p, .card-tile article, .card-tile blockquote,
+p.line-height-inherit, article.line-height-inherit, blockquote.line-height-inherit {
+  line-height: inherit !important;
+}
+
+cite {
+  opacity: 0.7;
+}
+
+/* Weights */
+.font-thin {
+  font-weight: 200;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.lowercase {
+  text-transform: lowercase;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.white {
+  color: #fff !important;
+}
+
+.faded {
+  opacity: 0.75;
+}
+
+.italics {
+  font-style: italic;
+}
+
+/* Font Awesome */
+.icon { /* Usually used in spans */
+  display: inline-block;
+  font-size: 21px; /* Best font sizes are multiples of 7 */
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  vertical-align: top;
+  width: 1.5rem;
+}
+
+.icon .fa {
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.icon.x-small {
+  margin: .55rem 0 0 0.1rem;
+}
+
+.icon.small {
+  margin: .95rem 0 0 0.1rem;
+}
+
+.fa {
+    font-size: 21px; /* Font sizes in multiple of 7s since they render the best */
+    text-align: center;
+    vertical-align: top;
+}
+
+.fa.x-small {
+  font-size: 7px;
+}
+
+.fa.small {
+  font-size: 14px;
+}
+
+.fa.large {
+  font-size: 28px;
+  padding: 0.5rem 0;
+}
+
+.fa.x-large {
+  font-size: 35px;
+  padding: 1rem 0;
+}
+
+.fa.xx-large {
+  font-size: 42px;
+    padding: 2rem 0;
+}
+
+.info {
+    display: block;
+    font-size: 0.75rem;
+    color: #979797;
+}
+
+.info.inline { /* Keeps the extra info inline */
+    display: inline-block;
+    margin-left: .5rem;
+}
+
+.info.success {
+  color: #4CAF50;
+}
+
+.info.error {
+  color: #F44336;
+}
+
+.caret {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+}
+
+/* Other text elements */
+abbr[title] {
+    border-bottom: .1rem dotted;
+    cursor: help;
+    text-decoration: none;
+}
+
+kbd {
+    background: #394558;
+    border-radius: .2rem;
+    color: #fff;
+    display: inline-block;
+    line-height: 1;
+    padding: 0.5rem;
+    vertical-align: baseline;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
+  h4 {
+    font-size: 1.5rem;
+  }
+  h5 {
+    font-size: 1.25rem;
+  }
+  h6 {
+    font-size: 1rem;
+  }
+  p, article, blockquote {
+      margin: 1rem 0;
+  }
+}
+
+/* FOOTER */
+
+footer {
+    width: 100%;
+    padding: 50px 0 10px;
+    background: #111;
+    text-align: center;
+    margin-top: 5rem;
+}
+
+footer a {
+    font-weight: bolder;
+    color: #fff;
+}
+
+footer p {
+    color: #848484;
+}
+
+footer h6 {
+    text-align: center;
+    letter-spacing: 6px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+footer .footer-list-title {
+    font-size: 75%;
+    text-transform: uppercase;
+    font-weight: bolder;
+    color: #ddd;
+}
+
+footer .footer-list-title:after {
+    content: "";
+    display: block;
+    width: 10%;
+    margin: auto;
+    border-bottom: 2px solid;
+    border-color: #343b49;
+}
+
+footer ul a .list-item {
+      margin: 0.1rem;
+    color: #888;
+    transition: all .3s;
+    font-size: 75%;
+    text-transform: uppercase;
+}
+
+/* The heart (you can set a custom id if you want) */
+footer p .fa {
+        color: #E90606;
+    margin: 0 3px;
+    animation: pound 0.35s infinite alternate;
+    -webkit-animation: pound 0.35s infinite alternate;
+        vertical-align: baseline;
+}
+/* FORMS */
+
+input[type="name"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+input[type="search"],
+input[type="text"],
+input[type="tel"],
+input[type="url"],
+input[type="password"],
+input[type="file"], select {
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: .8rem;
+  box-shadow: inset 0px 1px 2px rgba(0,0,0,0.05);
+  border-radius: 3px;
+  color: #5a5a5a;
+  font-family: 'Nunito Sans';
+  font-size: .85rem;
+  letter-spacing: .02rem;
+  box-sizing: border-box;
+  transition: all .3s;
+  outline: none;
+  margin: .5rem 0;
+    padding: .85rem 1.1rem;
+}
+
+input[type="search"] {
+    -webkit-appearance: none; /* Fix Safari issue */
+}
+
+textarea, textarea[type=text] {
+  width: 100%;
+  border: 1px solid #ddd;
+  padding: .8rem;
+  box-shadow: inset 0px 1px 2px rgba(0,0,0,0.05);
+  border-radius: 3px;
+  color: #5a5a5a;
+  font-family: 'Nunito Sans';
+  font-size: .85rem;
+  letter-spacing: .02rem;
+  box-sizing: border-box;
+  transition: all .3s;
+  outline: none;
+  margin: .5rem 0;
+   padding: 1rem 1.3rem;
+    min-height: 8rem;
+    line-height: 1.5rem;
+}
+
+input[type="color"] {
+    width: 100%;
+    border: 1px solid #ddd;
+    box-shadow: inset 0px 1px 2px rgba(0,0,0,0.05);
+    box-sizing: border-box;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    outline: none;
+    margin: .5rem 0;
+    padding: .55rem 0.8rem;
+    position: relative;
+    background: #fff;
+    height: 3rem;
+}
+
+input[type="name"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="search"]:focus,
+input[type="text"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="password"]:focus,
+input[type="file"]:focus, select:focus, textarea:focus, textarea[type=text]:focus,
+input[type="text"].input-focused,
+.input-focused { 
+    box-shadow: inset 0px 1px 8px rgba(0,0,0,0.1);
+    border-color: rgba(0, 102, 255, 0.5);
+}
+
+select:not([multiple]) {
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="9" height="12" viewBox="0 0 9 12"><path fill="#5e6c75" d="M0.722,4.823L-0.01,4.1,4.134-.01,4.866,0.716Zm7.555,0L9.01,4.1,4.866-.01l-0.732.726ZM0.722,7.177L-0.01,7.9,4.134,12.01l0.732-.726Zm7.555,0L9.01,7.9,4.866,12.01l-0.732-.726Z"/></svg>'); /* Add the up/down arrows for the multiselect */
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+}
+
+select[multiple] option {
+    padding: .2rem .4rem;
+}
+
+/* Search field */
+input[type="search"], input.search {
+    background-repeat: no-repeat;
+    background-position: left 0.6rem center;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="#000" fill-opacity="0.4" d="M14.891,14.39l-0.5.5a0.355,0.355,0,0,1-.5,0L9.526,10.529a5.3,5.3,0,1,1,2.106-4.212,5.268,5.268,0,0,1-1.1,3.21l4.362,4.362A0.354,0.354,0,0,1,14.891,14.39ZM6.316,2.418a3.9,3.9,0,1,0,3.9,3.9A3.9,3.9,0,0,0,6.316,2.418Z"/></svg>'); /* NEEDS FIXING */
+    padding-left: 32px;
+}
+
+input:disabled, input:disabled:hover, select:disabled, textarea:disabled {
+    background-color: #f3f3f6;
+    cursor: not-allowed;
+    border: 1px solid #f3f3f6;
+}
+
+label:first-child:not(:last-child):not(.form-group-label) {
+    margin-right: 0.1rem;
+}
+
+label:not(:first-child):not(:last-child):not(.form-group-label) {
+    margin: 0 0.1rem;
+}
+
+label:last-child:not(:first-child):not(.form-group-label) {
+    margin-right: 0.1rem;
+}
+
+/* Required asterisk */
+.required { /* Use this in a span or a div */
+    position: relative;
+    top: 1px;
+    font-weight: bold;
+    color: #f03c69;
+    font-size: 110%;
+    padding-left: .1rem;
+}
+
+.label:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.label {
+    color: #4a4a4a;
+    display: inline-block; /* changed from block */
+    font-weight: bold;
+    margin-top: .8rem;
+}
+
+.text-success {
+    border-color: #4CAF50 !important;
+}
+
+.input-success {
+    background-color: rgba(0, 224, 0, 0.05);
+}
+
+.text-error {
+    border-color: #F44336 !important;
+}
+
+.input-error {
+    background-color: rgba(244, 67, 54, 0.05);
+}
+
+/* Input Field Sizes */
+input[type].input-xsmall, select.input-xsmall {
+    font-size: 0.65rem;
+    padding: .35rem .9rem;
+}
+
+input[type].input-small, select.input-small {
+    font-size: 0.75rem;
+    padding: .55rem 1rem;
+}
+
+input[type].input-large, select.input-large {
+    font-size: 1.5rem;
+}
+
+input[type].input-xlarge, select.input-xlarge {
+    font-size: 2rem;
+}
+
+/* Select sizes */
+select.input-xsmall {
+    padding: .65rem 0.9rem;
+}
+
+select.input-small {
+    padding: .75rem 1rem;
+}
+
+select.input-large {
+    padding: .95rem 1.2rem;
+}
+
+select.input-xlarge {
+    padding: 1.05rem 1.3rem;
+}
+
+/* Used for when the input controls have another control adjacent to it but we want to position it inside the input field like font-awesome glyphs */
+.input-control {
+  position: relative;
+}
+
+/* Hold Font Awesome glyphs inside input fields */
+/* Nomral input only */
+/* More sizes coming soon */
+input[type].input-contains-icon {
+    padding-left: 2.75rem;
+}
+
+input[type].input-contains-icon.input-xsmall {
+    padding-left: 2rem;
+}
+
+input[type].input-contains-icon.input-xsmall + .icon {
+    margin: .55rem 0 0 0.1rem;
+}
+
+input[type].input-contains-icon.input-small {
+    padding-left: 2.5rem;
+}
+
+input[type].input-contains-icon.input-small + .icon {
+    margin: .95rem 0 0 0.3rem;
+}
+
+input[type].input-contains-icon.input-large {
+    padding-left: 3rem;
+}
+
+input[type].input-contains-icon.input-large + .icon {
+    margin: 1.1rem 0 0 0.7rem;
+}
+
+input[type].input-contains-icon.input-xlarge {
+    padding-left: 3.5rem;
+}
+
+input[type].input-contains-icon.input-xlarge + .icon {
+    margin: .85rem 0 0 0.8rem;
+}
+
+.input-contains-icon + .icon { /* Nomral input only */
+    position: absolute;
+    left: 0;
+    height: 2rem;
+    top: 0;
+    width: 2rem;
+    margin: 1.15rem 0 0 0.5rem;
+    vertical-align: baseline;
+    z-index: 1;
+}
+
+/* Form section just adds extra spacing between form elements tiled vertically */
+.form-section:not(:last-child) {
+    margin-bottom: 1rem;
+}
+
+/* Form groups that group inputs with other controls. */
+.form-group {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex; /* Using flexbox for form group */
+}
+
+/* Fixes the text width being cut off */
+.form-group .form-group-btn {
+    -webkit-flex: 1 0 auto;
+    -ms-flex: 1 0 auto;
+    flex: 1 0 auto;
+}
+
+/* This is just an extended portion of an input which is just like a label and is read only */
+/* This will style the controls if they are the leftmost control in the form group for labels, inputs, and buttons. */
+.form-group .form-group-label:first-child:not(:last-child), .form-group .form-group-input:first-child:not(:last-child), .form-group .form-group-btn:first-child:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Style the middle controls */
+.form-group .form-group-label:not(:first-child):not(:last-child), .form-group .form-group-input:not(:first-child):not(:last-child), .form-group .form-group-btn:not(:first-child):not(:last-child) {
+    border-radius: 0;
+    margin-left: -.1rem;
+}
+
+/* Handles right most control in form group */
+.form-group .form-group-label:last-child:not(:first-child), .form-group .form-group-input:last-child:not(:first-child), .form-group .form-group-btn:last-child:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-left: -.1rem;
+}
+
+/* Form group controls */
+.form-group-label {
+    border-radius: .2rem;
+    padding: .8rem;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    color: #909090;
+    margin: .5rem 0;
+    user-select: none;
+}
+
+.form-group-label.label-xsmall {
+    font-size: 0.55rem;
+    padding: .35rem .9rem;
+}
+
+.form-group-label.label-small {
+    font-size: 0.75rem;
+    padding: .55rem 1rem;
+}
+
+.form-group-label.label-large {
+    font-size: 1.5rem;
+}
+
+.form-group-label.label-xlarge {
+    font-size: 2rem;
+}
+
+/* Keeps inputs in form group above other components */
+.form-group-input {
+    z-index: 1;
+}
+
+/* Change place holder color */
+::-moz-placeholder {
+    color: #a9a9a9; /* Lighter than the default */
+}
+
+::-webkit-input-placeholder {
+    color: #a9a9a9; /* Lighter than the default */
+}
+
+/* Separate CSS file, but same part as Layout */
+
+/* The base container that is similar in structure to a card but more flexible */
+.frame {
+    display: flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border: .1rem solid #ececec;
+}
+
+/* For the frame header and footer, use flex display */
+.frame .frame-header,
+.frame .frame-footer {
+    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+    padding: 1rem;
+}
+
+/* The frame navbar can be used with level or header classes to create a navigation menu */
+.frame .frame-nav {
+    flex: 0 0 auto;
+    -webkit-flex: 0 0 auto;
+    -ms-flex: 0 0 auto;
+}
+
+.frame .frame-body {
+    flex: 1 1 auto;
+    -webkit-flex: 1 1 auto;
+    -ms-flex: 1 1 auto;
+    overflow-y: auto; /* Show the scrollbar when needed */
+    padding: 0 1.5rem;
+}
+
+.frame .frame-title {
+    color: #374054;
+    font-size: 1rem;
+}
+
+.frame .frame-subtitle {
+    color: rgba(55, 64, 84, 0.6);
+    font-size: .85rem;
+}
+/* HEADER */
+
+.header {
+        -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch; /* Make items fill up all available space regardless of width https://drafts.csswg.org/css-align/ */
+    background-color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    min-height: 3.5rem;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    width: 100%;
+    padding: 0 1rem;
+    box-shadow: 0 3px 15px rgba(57, 63, 72, 0.3);
+    top: 0;
+}
+
+/* Styles for header menu (aka the nav bar) */
+.header-menu {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+/* These styles can also be used on menus in the body */
+.header-left, .header-right {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    -ms-grid-row-align: stretch;
+    align-items: stretch;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+/* Align items to the left */
+.header-left {
+        display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Align items to the right */
+.header-right {
+       display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    overflow: hidden;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+/* Allow the user to scroll through navbar items if it exceeds nav-left, nav-center, or nav-right widths */
+.header-overflow-x {
+    justify-content: inherit;
+    overflow-x: scroll;
+}
+
+/* Centering items */
+.header-center {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Static header at the top of the screen */
+.header-fixed {
+    position: fixed;
+}
+
+/* Wrapper to vertically center header items */
+.header-item {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    padding: 0 .3rem;
+    cursor: hand;
+}
+
+.header-item a {
+    padding: 0.5rem 0.75rem;
+}
+
+/* Hover effect for header elements when appropriate */
+.header-item:not(.no-hover):hover {
+     -webkit-transition: all .3s;
+     transition: all .3s;
+      background-color: rgba(0, 0, 0, 0.05);
+}
+
+.header-item.selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* HEADER DROP DOWN MENU */
+.header-item .dropdown-menu {
+        margin-top: -5px;
+    background-color: #fff;
+        position: absolute;
+    top: 95%;
+    z-index: 1000;
+    display: none !important;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    list-style: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border-radius: 0 0 4px 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.1);
+    box-shadow: 0 6px 12px rgba(0,0,0,.1);
+}
+
+/* Dark dropdown menu theme */
+.header-item .dropdown-menu.dropdown-dark {
+    background-color: rgba(0, 0, 0, 0.87);
+    border: 1px solid #333;
+    color: #fff;
+}
+
+.dropdown-menu.dropdown-shown{
+    display: block !important;
+}
+
+.dropdown-menu > li > a {
+    display: block;
+        padding: .5rem 1rem;
+    clear: both;
+    line-height: 1.42857143;
+    white-space: nowrap;
+}
+
+.dropdown-menu > li {
+  margin: 0;
+    -webkit-transition: all .3s;
+     transition: all .3s;
+}
+
+.dropdown-menu > li:hover {
+    -webkit-transition: all .3s;
+     transition: all .3s;
+      background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dropdown-menu > li:last-child {
+    margin-bottom: 0;
+}
+
+.header-btn {
+    cursor: pointer;
+    display: block;
+    height: 3.5rem;
+    position: relative;
+    width: 3.5rem;
+}
+
+@media screen and (min-width: 769px) {
+    .header-right {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+
+/* Hide hamburger button */
+    .header-btn {
+    display: none;
+}
+}
+
+@media screen and (max-width: 768px) {
+  .header-menu.is-active {
+      display: block;
+  }
+
+  /* For those who want an animated drop down menu, display will be block by default and only height will change */
+    .header-menu.nav-animated {
+        display: block;
+        height: 0;
+    }
+
+  /* Slide down effect */
+  .header-menu.nav-animated.is-active {
+    height: 100vh;
+    overflow: auto; /* Only show scrollbar when needed */
+  }
+
+/* Dropdown menu for smaller screen sizes */
+  .header-menu {
+    background-color: white;
+    box-shadow: 0 4px 7px rgba(10, 10, 10, 0.1);
+    left: 0;
+    display: none;
+    right: 0;
+    top: 100%;
+    position: absolute;
+  }
+
+  .dropdown-menu.dropdown-shown {
+    margin-top: 0;
+    position: relative;
+    float: left;
+    margin-left: 20px;
+    border: none;
+    border-radius: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .header-item .dropdown-menu.dropdown-dark {
+    background-color: rgba(0, 0, 0, 0.17);
+    border: 0;
+    color: #fff;
+}
+
+  /* Make the menu items larger in the dropdown menu */
+  .header-menu .header-item {
+    padding: 1rem 0;
+  }
+
+  /* Get rid of extra spaces */
+  .header-menu .header-item > a {
+    padding: 0;
+    width: 100%; /* Stretch the link to span the entire list item */
+  }
+
+  /* Hamburger button */
+  .header-btn span {
+        background-color: #4D565F;
+    display: block;
+    height: 2px;
+    left: 50%;
+    margin-left: -7px;
+    position: absolute;
+    top: 50%;
+    -webkit-transition: none 86ms ease-out;
+    transition: none 86ms ease-out;
+    -webkit-transition-property: background, left, opacity, -webkit-transform;
+    transition-property: background, left, opacity, -webkit-transform;
+    transition-property: background, left, opacity, transform;
+    transition-property: background, left, opacity, transform, -webkit-transform;
+    width: 15px;
+  }
+
+  /* Line spacing in hamburger button */
+  .header-btn span:nth-child(1) {
+    margin-top: -6px;
+  }
+
+  .header-btn span:nth-child(2) {
+    margin-top: -1px;
+  }
+
+  .header-btn span:nth-child(3) {
+    margin-top: 4px;
+  }
+}
+
+/* HEADER */
+
+.content {
+  max-width: 60em;
+  margin: 0 auto 1.5em;
+  width: 80%;
+}
+
+.content-no-padding { /* Content without the extra margin at the bottom */
+  max-width: 60em;
+  margin: 0 auto;
+  width: 80%;
+}
+
+.content blockquote {
+  background-color: #f5f5f5;
+  border-left: 5px solid #dbdbdb;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
+
+/* Content that centers in parent and fills parent div without the extra vertical margin */
+.content-fluid {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fullscreen {
+   top:0;
+   right:0;
+   bottom:0;
+   left:0;
+   height: 100vh;
+}
+
+/* This works well with panel */
+section {
+    display: block;
+}
+
+.panel {
+    padding: 2.5em 0;
+}
+
+/* This works well with spans and maybe even hr */
+.divider {
+  display: block;
+  height: 2px;
+  position: relative;
+  border-top: none;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background: #eee;
+      width: 100%;
+}
+
+.divider-short {
+  max-width: 15rem;
+  width: 100%;
+}
+
+/* Hero image div */
+.hero-img {
+  /* Specify the backgroud image yourself */
+  background-size: cover;
+width: 100%;
+height: 100%;
+}
+
+.parallax-img {
+  background-attachment: fixed !important;
+}
+
+.hero { /* Parent of hero-body */
+  -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; /* Important to stretch height of hero-body */
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column; /* Stack the items in the container */
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.hero-body {
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1; /* Tells the hero-body to take up the entire space */
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    padding: 3rem 1.5rem;
+    -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+space {
+  display: block;
+  width: 100%;
+  height: 1rem;
+}
+
+space.large {
+  padding: 1rem 0;
+}
+
+space.x-large {
+  padding: 2rem 0;
+}
+
+/* Use for spacing out elements vertically */
+.row {
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    max-width: 100%;
+    padding: .5rem;
+}
+
+.row.flex {
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.row:after {
+  content: '';
+  clear: both;
+  display: table;
+}
+
+/* GRID */
+.row .col-1 {
+  width: 8.33333333%;
+}
+
+.row .col-2 {
+  width: 16.66666667%;
+}
+
+.row .col-3 {
+  width: 25%;
+}
+
+.row .col-4 {
+  width: 33.33333333%;
+}
+
+.row .col-5 {
+  width: 41.66666667%;
+}
+
+.row .col-6 {
+  width: 50%;
+}
+
+.row .col-7 {
+  width: 58.33333333%;
+}
+
+.row .col-8 {
+  width: 66.66666667%;
+}
+
+.row .col-9 {
+  width: 75%;
+}
+
+.row .col-10 {
+  width: 83.33333333%;
+}
+
+.row .col-11 {
+  width: 91.66666667%;
+}
+
+.row .col-12 {
+  width: 100%;
+}
+
+/* Column offsets on the left side */
+.row .offset-1 {
+  margin-left: 8.33333333%;
+}
+
+.row .offset-2 {
+  margin-left: 16.66666667%;
+}
+
+.row .offset-3 {
+  margin-left: 25%;
+}
+
+.row .offset-4 {
+  margin-left: 33.33333333%;
+}
+
+.row .offset-5 {
+  margin-left: 41.66666667%;
+}
+
+.row .offset-6 {
+  margin-left: 50%;
+}
+
+.row .offset-7 {
+  margin-left: 58.33333333%;
+}
+
+.row .offset-8 {
+  margin-left: 66.66666667%;
+}
+
+.row .offset-9 {
+  margin-left: 75%;
+}
+
+.row .offset-10 {
+  margin-left: 83.33333333%;
+}
+
+.row .offset-11 {
+  margin-left: 91.66666667%;
+}
+
+.row .offset-12 {
+  margin-left: 100%;
+}
+
+/* Use in parent div of fluid col */
+.fluid-container {
+  display: flex;
+  overflow: auto;
+}
+
+/* Wrap controls instead on overflow */
+.fluid-container.wrap {
+  -webkit-align-items: center;
+    align-items: center;
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    -ms-flex-align: center;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+/* Resizes elements in a row equally given the number of elements located in it */
+.row .col-fluid {
+    display: block;
+    -ms-flex-preferred-size: 0;
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+}
+
+.row .col-fluid.no-flex {
+    flex-grow: 0;
+    flex-shrink: 0;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    -ms-flex-negative: 0;
+}
+
+/* Some offset values */
+.row [class^='col-'], .row [class*=" col-"] {
+  float: left; /* Keeps the elements in 1 row */
+  padding: 0 .5rem;
+}
+
+/* Columns without the spacing */
+.row [class^='col-'].no-space, .row [class*=" col-"].no-space {
+  padding: 0;
+}
+
+/* Ignore overflow in columns */
+.row.expand {
+    -webkit-flex-wrap: nowrap; /* Remove wrapping of the columns by default */
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    overflow-x: auto; /* Can be disabled to remove scroll bar */
+}
+
+/* Only for divs with .expand so they can go past the parent div width */
+.row.expand [class^='col-'], .row.expand [class*=" col-"] {
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none;
+}
+
+/* Known to cause spacing issues in columns */
+/*.row [class^='col-']:first-child, .row [class*=" col-"]:first-child{
+  margin-left: 0;
+}*/
+ 
+/* Used for aligning controls next to each other */
+.row.has-controls {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+}
+
+/* Divider for multiple elements in a div */
+.divided >.fluid-container:not(.row), .divided >.row [class^='col-'] {
+    box-shadow: -1px 0 0 0 rgba(34,36,38,.15);
+}
+
+/* Remove border in first child */
+.divided >.row [class^='col-']:first-child, .divided >.row [class^='col-']:first-child {
+    box-shadow: none;
+}
+
+.level {
+    -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+.level-left {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start; /* Start for left */
+  margin-right: 1rem;
+}
+
+.level-right {
+    -webkit-box-align: center;
+  -ms-flex-align: center;
+  -ms-grid-row-align: center;
+  align-items: center;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end; /* End for right */
+  margin-left: 1rem;
+}
+
+.level-item { /* Centers items */
+      -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+    -webkit-box-flex: 0;
+    -ms-flex-positive: 0;
+    flex-grow: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+/* Used to stretch the contents of div in level to fill */
+.level-content {
+  -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    -ms-flex-negative: 1;
+    flex-shrink: 1;
+    text-align: left;
+    width: 100%;
+}
+
+/* PAGINATION */
+/* Parent contianer for page navigation */
+.pagination {
+  display: flex;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+}
+
+/* Use for the major pagination meant to display about 2 items */
+.pagination-item {
+  -webkit-flex: 1 0 50%; /* Flex to fill */
+  -ms-flex: 1 0 50%;
+  flex: 1 0 50%;
+}
+
+.pagination .pagination-item *[disabled] {
+    cursor: pointer;
+    opacity: .5;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.pagination .pagination-item {
+  margin: 1rem .1rem;
+  transition: all .3s;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+}
+
+.pagination .pagination-item.pagination-next {
+  text-align: right;
+}
+
+.pagination .pagination-item.pagination-prev {
+  text-align: left;
+}
+
+.pagination-item-subtitle {
+  opacity: 0.7;
+  margin: 0;
+}
+
+/* Color the selected pagination item with accent color */
+.pagination .pagination-item.short.selected {
+  background-color: #f03d4d;
+  color: #fff;
+}
+
+.pagination .pagination-item.short.selected a {
+  color: #fff;  
+}
+
+.pagination .pagination-item.short * {
+  display: inline-block;
+}
+
+/* Used to display many pagination items */
+.pagination .pagination-item.short {
+  margin: .2rem;
+  border-radius: .1rem;
+  -webkit-flex: 0; /* Flex to fill */
+  -ms-flex: 0;
+  flex: 0;
+}
+
+/* Not good but CSS does not have heading selectors. Need to move to SASS */
+.pagination .pagination-item:hover p,
+.pagination .pagination-item:hover h1,
+.pagination .pagination-item:hover h2,
+.pagination .pagination-item:hover h3,
+.pagination .pagination-item:hover h4,
+.pagination .pagination-item:hover h5,
+.pagination .pagination-item:hover h6,
+.pagination .pagination-item:hover *:not([disabled]) {
+  transition: all .3s;
+  color: #f03d4d;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  -ms-transition: all .3s;
+  -o-transition: all .3s;
+}
+
+/* Width CSS */
+.w-10 {
+  width: 10%;
+}
+
+.w-20 {
+  width: 20%;
+}
+
+.w-30 {
+  width: 30%;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.w-60 {
+  width: 60%;
+}
+
+.w-70 {
+  width: 70%;
+}
+
+.w-80 {
+  width: 80%;
+}
+
+.w-90 {
+  width: 90%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+    .row {
+      margin-top: 0;
+    }
+
+    .row [class^='col-']:not(.ignore-screen), .row [class*=" col-"]:not(.ignore-screen) { /* Remove the grid structure for smaller screens */
+      width: 100%;
+      margin-top: 1rem;
+      margin-left: 0;
+    }
+
+    /* Increase space with cards */
+    .fluid-container  [class^='col-']:not(.ignore-screen), .row [class*=" col-"]:not(.ignore-screen) {
+      margin-top: 1rem;
+    }
+
+    .fluid-container {
+      display: inherit;
+    }
+
+    /* Dividers for mobile layout */
+    .divided >.fluid-container:not(.row), .divided >.row [class^='col-'] {
+      box-shadow: 0 -1px 0 0 rgba(34,36,38,.15);
+  }
+
+  .level.ignore-screen, .level-left.ignore-screen, .level-right.ignore-screen {
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+  }
+}
+
+/* LINKS */
+
+a {
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+  color: #8292a2;
+  text-decoration: none;
+  font-weight: 600;
+      padding: 2px;
+      -webkit-backface-visibility: hidden;
+backface-visibility: hidden;
+}
+
+a:hover {
+  color: #7C8B9A;
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+  -webkit-backface-visibility:hidden;
+         backface-visibility:hidden;
+}
+
+a,a:visited,a:hover,a:active{
+  -webkit-backface-visibility:hidden;
+          backface-visibility:hidden;
+  text-decoration:none;
+}
+
+.subtitle a {
+  padding: 0; /* Removes weird offset in subtitle links */
+}
+
+a.display-block {
+  display: block;
+}
+
+a.underline {
+  text-decoration: underline;
+}
+
+/* Animated links */
+.u, .utb {
+  position: relative; /* So the psuedo-elements are positioned correctly */
+}
+
+/* Underline */
+
+.u:after {
+  content: "";
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      position: absolute;
+      height: 0.1rem;
+      width: 0;
+      background: #7C8B9A;
+      bottom: -0.25em;
+}
+
+.u:hover:after {
+  width: 100%
+}
+
+.u-LR:after { /* Left to Right */
+  left: 0;
+}
+
+.u-RL:after { /* Right to Left */
+  right: 0;
+}
+
+.u-RL:hover:after {
+  width: 100%;
+}
+
+.u-C:after { /* Center Outwards */
+  left:50%;
+  -webkit-transform:translateX(-50%);
+          transform:translateX(-50%);
+}
+
+/* Underline top and bottom */
+.utb:before, .utb:after {
+  content: "";
+  -webkit-transition: all .3s;
+  -moz-transition: all .3s;
+  transition: all .3s;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      position: absolute;
+      height: 0.1rem;
+      width: 0;
+      background: #7C8B9A;
+}
+
+.utb:before {
+  top: -0.25em;
+}
+
+.utb:after {
+  bottom: -0.25em;
+}
+
+.utb:hover:before, .utb:hover:after {
+  width: 100%;
+}
+
+.utb-LR:before, .utb-LR:after {
+  left: 0;
+}
+
+.utb-RL:before, .utb-RL:after {
+  right: 0;
+}
+
+.utb-C:before, .utb-C:after {
+  left: 50%;
+  -webkit-transform:translateX(-50%);
+          transform:translateX(-50%);
+}
+
+/* Opposite start */
+.utb-OLR:before { /* Suffix denotes border transition direction for the top border (left to right). Bottom border will be the opposite direction */
+  left: 0;
+}
+
+.utb-OLR:after {
+  right: 0;
+}
+
+.utb-ORL:before {
+  right: 0;
+}
+
+.utb-ORL:after {
+  left: 0;
+}
+
+/* Links with square borders */
+
+/* Please note that usquare is the parent span (not div) which would create the left and right borders. The link (.utb-OLR) gets nested within this */
+
+.usquare{
+  box-sizing:border-box; /* keeps the border from resizing the link */
+  margin-left: 0.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.usquare a{
+  position: static;
+  padding: 0.2rem 0.4rem;
+}
+
+.usquare:before, .usquare:after{
+  content: "";
+  box-sizing: border-box;
+  transition: 0.25s all ease;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  position: absolute;
+  width: 2px;
+  width: 0.1 rem;
+  height: 0;
+  background: #7C8B9A;
+}
+
+.usquare:before{
+  left: 0;
+  bottom: -0.2rem;
+}
+
+.usquare.delay:before{
+  transition-delay: 0.6s;
+}
+
+.usquare:after{
+  right: 0;
+  top: -0.2rem;
+}
+
+.usquare.delay:after{
+  transition-delay: 0.2s;
+}
+
+.usquare a:before {
+  left:0;
+  transition: 0.25s all ease;
+}
+
+.usquare a:after {
+  right:0;
+  transition: 0.25s all ease;
+}
+
+.usquare.delay a:after {
+  transition: 0.25s all ease 0.4s;
+}
+
+.usquare:hover:before, .usquare:hover:after{
+  height:calc(100% + 0.4rem); /* Makes the left and right borders */
+}
+
+.usquare:hover a:before, .usquare:hover a:after{
+  width:100%;
+}
+
+/* Makes the regular link have slightly more padding */
+.btn-link {
+  padding: 0.5rem;
+}
+/* LISTS */
+
+ul {
+  list-style: disc inside;
+}
+
+ol {
+  list-style: decimal inside;
+}
+
+/* Description lists */
+
+dl, dd {
+    margin-bottom: 1rem;
+}
+
+dd {
+  margin-left: 1rem;
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+li:last-child {
+  margin-bottom: 1em;
+}
+
+/* MISC */
+ul.no-bullets {
+  list-style: none;
+}
+
+/* MENU LISTS */
+.menu {
+  font-size: 1rem;
+}
+
+ul.menu {
+  list-style: none;
+  margin: .5rem 0;
+}
+
+/* Style headers to have even space distribution. */
+.menu-title:not(:first-child) {
+  margin-bottom: 1rem;
+}
+
+.menu-title:not(:last-child) {
+  margin-top: 1rem;
+}
+
+/* Style menu items */
+.menu .menu-item a {
+  border-radius: 2px;
+  color: #555;
+  display: block;
+  padding: 0.5em 0.75em;
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  font-size: 0.85rem;
+  border-radius: 3px;
+}
+
+.menu .menu-item a:hover {
+  background: rgba(208, 208, 208, 0.5);
+  -webkit-transition: all .2s;
+  transition: all .2s;
+  
+}
+
+.menu .menu-item a.selected {
+  color: #fff;
+  background: #f03d4d;
+}
+
+.menu .menu-item .menu-addon {
+  padding: 0.35rem;
+  z-index: 1;
+  position: relative;
+  color: #fff;
+  cursor: hand;
+  float: left;
+  margin-right: .1rem;
+}
+
+.menu .menu-item .menu-addon.right {
+  float: right;
+  margin-right: 0;
+  margin-left: .1rem
+}
+
+/* Style sub menus inside a menu */
+.menu .menu-item ul {
+    border-left: 1px solid #dbdbdb;
+    margin: 0.75rem;
+    padding-left: 0.75rem;
+}
+
+/* Menu item divider */
+.menu .divider {
+    border-top: .1rem solid #eee;
+    height: .1rem;
+    margin: 1rem 0;
+}
+
+/* Title for the section separated by the divider */
+.menu .divider:after {
+  content: attr(data-label); /* Text that will be displayed */
+  background: #fff;
+  color: #b7b7b7;
+  display: inline-block;
+  padding: 0 .7rem;
+  margin: .5rem;
+  font-size: .7rem;
+  -webkit-transform: translateY(-1.1rem);
+    -ms-transform: translateY(-1.1rem);
+    transform: translateY(-1.1rem);
+}
+/* MEDIA CSS */
+/* Handles images, videos, figures, etc */
+
+/* Altered, originally just video in 0.4.6 */
+video.video-fullscreen {
+  position: absolute;
+  height: 100vh;
+  object-fit: cover;
+  width: 100%;
+  z-index: -1;
+}
+
+/* Add to parent container to make media child fill container */
+.media-stretch {
+    display: block;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+}
+
+/* Add pseudoclass to allow media to have height (default height is 0) */
+.media-stretch::before {
+    content: "";
+    display: block;
+    padding-bottom: 56.25%; /* 9 / 16  for 16:9 ratio */
+}
+
+/* Force media embed to fill parent container */
+.media-stretch iframe,
+.media-stretch embed,
+.media-stretch object {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Make sure media does exceed or go under boundary limit */
+    height: 100%;
+}
+
+/* For HTML5 video objects */
+.media-stretch video {
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Alternate media ratios */
+.media-stretch.rat-4-3::before {
+    padding-bottom: 75%;
+}
+
+.media-stretch.rat-1-1::before {
+    padding-bottom: 100%;
+}
+
+/* FIGURES */
+/* For flexible media display */
+.fig {
+    margin: 0 0 0.5rem 0; /* Small margin at the bottom */
+}
+
+.fig .fig-caption {
+    margin-top: 1rem;
+}
+
+/* IMAGES */
+.img-stretch {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.img-cover {
+    object-fit: cover;
+}
+
+.img-contain {
+    object-fit: contain;
+}
+
+/* Avatar */
+.avatar {
+    border-radius: 50%;
+    position: relative;
+    display: block;
+    margin: auto;
+    font-size: 1rem;
+    font-weight: lighter;
+    width: 3.2rem;
+    height: 3.2rem;
+    background-color: #f03d4d;
+    overflow: hidden;
+}
+
+/* Draw text on image just like in Gmail */
+.avatar:before {
+    content: attr(data-text);
+    z-index: 1;
+    color: #fff;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+.avatar.img-xsmall {
+    font-size: .8rem;
+    width: 1.6rem;
+    height: 1.6rem;
+}
+
+.avatar.img-small {
+    font-size: 1rem;
+    height: 2.4rem;
+    width: 2.4rem;
+}
+
+.avatar.img-large {
+    font-size: 2rem;
+    height: 4.8rem;
+    width: 4.8rem;
+}
+
+.avatar.img-xlarge {
+    font-size: 2.6rem;
+    height: 6.4rem;
+    width: 6.4rem;
+}
+
+.avatar img.padded {
+    padding: .5rem;
+    width: 100%;
+}
+/* TABLE */
+
+.table {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    border-collapse: collapse; /* Allows us to set 0 margin in table cells */
+    border-spacing: 0;
+}
+
+.table td, .table th {
+        border: 1px solid #dbdbdb;
+    border-width: 0 0 1px;
+    padding: 0.75rem;
+    vertical-align: top;
+    text-align: center;
+    margin: 0;
+}
+
+.table tr {
+    -webkit-transition: all .3s;
+    transition: all .3s;
+
+}
+
+.table tr:hover, .table.striped tbody tr:nth-child(even):hover {
+    background: #eee;
+}
+
+/* Thicker border for table header */
+.table thead th, .table thead {
+    border-bottom: 2px solid #dbdbdb;
+}
+
+.table.bordered thead th, .table.bordered thead {
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.table thead th, .table tfoot th {
+      padding: 1rem;
+}
+
+.table tfoot th {
+  border-top: 2px solid #dbdbdb;
+  border-bottom: none;
+}
+
+/* CUSTOM STYLES */
+/* All borders */
+.table.bordered td, .table.bordered th {
+  border: 1px solid #dbdbdb;
+}
+
+.table.bordered thead td, .table.borderd thead {
+  border-width: 1px;
+}
+
+/* Striped table */
+.table.striped tbody tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+
+/* Decrease padding */
+.table.small td, .table.small th {
+    padding: 0.25rem 0.75rem;
+}
+
+/* Fixed title table */
+.table.fixed-head thead {
+      position: relative;
+    display: block;
+}
+
+.table.fixed-head tbody {
+      height: 200px; /* Set the height you want */
+    display: block; /* Needed */
+    overflow: auto; /* Shows scrollbars */
+}
+
+.table.fixed-head tr {
+  display: table;
+    width: 100%; /* Forces row to span container */
+}
+.toast {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(49, 59, 80, 0.9);
+    border: 1px solid #313b50;
+    border-radius: 2px;
+}
+
+.toast.translucent {
+    opacity: .5;
+}
+
+.toast.translucnet:hover {
+    opacity: 1;
+}
+
+/* TOAST TYPES */
+.toast.primary {
+    background: rgba(240, 61, 77, 0.9);
+    border-color: #f03d4d;
+}
+
+.toast.confirm {
+    background: rgba(76, 217, 100, 0.9);
+    border-color: #4cd964;
+}
+
+.toast.warning {
+    background: rgba(255, 204, 0, 0.9);
+    border-color: #ffcc00;
+}
+
+.toast.error {
+    background: rgba(255, 59, 48, 0.9);
+    border-color: #ff3b30;
+}
+
+/* Add the rest later */
+
+.toast a {
+    color: #fff;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.toast a:hover {
+    opacity: .8;
+    transition: all .3s;
+}
+
+
+/* UTILS */
+/* Utility classes to help solve some very annoying issues */
+
+.this-inline {
+  display: inline;
+}
+
+.this-inline-block {
+  display: inline-block;
+}
+
+.this-inline-flex {
+  display: -webkit-inline-bpx;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+
+/*
+   When using floats, clearfix allows the container to automatically resize so that
+   other elements are not blocked by children.
+*/
+
+.clearfix:after {
+  clear: both;
+  content: " ";
+  display: table;
+}
+
+/* This is mainly to keep elements from overlapping when using floats */
+.clear-left {
+  clear: left;
+}
+
+.clear-right {
+  clear: right;
+}
+
+.clear-both {
+  clear: both;
+}
+
+.pull-left {
+  float: left;
+}
+
+.pull-right {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Center element - best used for hero bodies or text */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+      margin: 0 auto;
+}
+
+.center-alt, .center-alt:hover, .center-alt:active { /* If flexbox method fails, this works for elements with unknown dimensions */
+  position: absolute;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+}
+
+.vertical-center {
+  display: flex;
+  justify-content: center;
+}
+
+.horizontal-center {
+  display: flex;
+  align-items: center;
+}
+
+.this-overlay {
+  bottom:0;
+  left: 0;
+  right: 0;
+  top: 0;
+  position: absolute;
+}
+
+.hide-overflow {
+  overflow: hidden !important;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.hide {
+  display: none !important;
+}
+
+.disabled {
+  cursor: not-allowed;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.box {
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1), 0 0 0 1px rgba(10, 10, 10, 0.1);
+  display: block;
+  padding: 20px;
+}
+
+.box:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.fill-width {
+  width: 100%
+}
+
+.no-margin {
+  margin: 0 !important;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+/* Do the actual balancing only on larger screens */
+@media screen and (min-width: 769px) {
+.level, .level-left, .level-right {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+/* Hide elements based on screen size */
+@media screen and (max-width: 400px) {
+  .hidden-phone {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hidden-tablet {
+    display: none;
+  }
+}
