@@ -35,6 +35,8 @@ img {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-around;
+
+	list-style: none;
 }
 
 .menu a {
@@ -178,14 +180,53 @@ td{
 	-webkit-text-fill-color: transparent;
 }
 
-footer {
+.pre-footer {
+	background-image: linear-gradient(
+	  rgba(31, 58, 147, 1),
+	  rgba(31, 58, 147, 1));
+	height: 15em;
+
+}
+
+.footer {
 
 	background-image: linear-gradient(
-	  rgba(245, 247, 247, 1),
-	  rgba(245, 247, 247, 1));
+	  rgba(55, 69, 80, 1),
+	  rgba(55, 69, 80, 1));
 	height: 10em;
 
 }
+
+.resources-pre-footer {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-around;
+}
+
+.menu-footer {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-around;
+
+	list-style: none;
+}
+
+.menu-footer a {
+	color: white;
+	font-size: 0.75em;
+}
+
+
+.footer p {
+	color: white;
+	font-size: 0.80em;
+}
+
+
+/*.menu-footer .usquare .utb:before, .utb:after {
+	background: #FFFFFF;
+}*/
+
 
 /*Scrollbar (webkit only) */
 
