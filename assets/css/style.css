@@ -15,6 +15,43 @@ img {
     max-width: 100%;
 }
 
+.navigation {
+	display: flex;
+	align-items: center;
+
+	background-image: linear-gradient(
+	  rgba(255, 255, 255, 0),
+	  rgba(255, 255, 255, 0));
+
+}
+
+.logo {
+	content: url("../images/caixa-logo-bw.png");
+	width: 120px;
+	margin-left: 2em;
+}
+
+.menu {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-around;
+}
+
+.menu a {
+	color: white;
+}
+
+/*Sobrescreve a cor padrão do Cirrus para underline dos links do menu*/
+
+.menu .u:after {
+	background: #FFFFFF !important;
+}
+
+.right-buttons {
+	display: flex;
+	justify-content: flex-end;
+}
+
 .hero-image {
 	background-image: linear-gradient(
 	  rgba(0, 0, 0, 0.5),
